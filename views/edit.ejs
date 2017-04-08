@@ -1,0 +1,24 @@
+<%- include('header')%>
+
+<div class="edit row">
+	<div class="col-sm-2 col-sm-offset-2 hidden-xs">
+		<a 	class="avatar"
+			href=""
+		>
+			<img src="<%= post.author.avatar%>" width="50" height="50">
+		</a>
+	</div>
+	<div class="edit-content col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+		<form method="post" action="/posts/<%= post._id%>/edit" >
+			<div class="form-group">
+				<h4 class="edit-content-title">标题</h4>
+				<input class="form-control" type="text" name="title" value="<%= post.title%>">
+			</div>
+			<div class="form-group">
+				<label>内容</label>
+				<textarea class="form-control" rows="15" name="artical"><%= post.content%></textarea>
+			</div>
+			<input class="btn btn-default" type="submit" value="发布">
+		</form>
+	</div>
+</div>

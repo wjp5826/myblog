@@ -1,0 +1,32 @@
+<div class="comment row">
+	<div class="col-sm-2 col-sm-offset-1 hidden-xs">
+		<a 	class="avatar"
+			href="/posts?author=<%= post.author._id %>"
+		   	data-title="<%= post.author.name %> | <%= ({m:'男',f:'女',x:'保密'})[post.author.gender]%>"
+		   	data-content="<%= post.author.bio %>"
+		>
+			<img class="avatar" src="/img/<%= post.author.avatar %>">
+		</a>
+	</div>
+	<div class="comment-content col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+		<h3 class="comment-content-title"><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
+		<pre><%- post.content %></pre>
+		<div>
+			<span><%= post.create_at %></span>
+			<span class="comment-content-right">
+				<span>浏览(<%= post.pv %>)</span>
+				<span>留言(<%= post.commentCount | 0 %>)</span>
+				<% if(user && post.author._id && user._id.toString() === post.author._id.toString()){ %>
+					<div class="dropdown">
+					<i class="caret" data-toggle="dropdown" id="dropdownMenu1"></i>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li><a href="/posts/<%= post._id %>/edit">编辑</a></li>
+						<li><a href="/posts/<%= post._id %>/remove">删除</a></li>
+					</ul>
+					</div>
+				<% } %>
+				
+			</span>
+		</div>
+	</div>
+</div>

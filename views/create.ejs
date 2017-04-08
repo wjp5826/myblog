@@ -1,0 +1,28 @@
+<%- include('header') %>
+
+<div class="row">
+	<div class="col-sm-2 col-sm-offset-1">
+		<a 	class="avatar"
+			href="/posts?author=<%= user._id %>"
+			data-title="<%= user.name %> | <%=({m:'男',f:'女',x:'保密'})[user.gender] %>"
+			data-content="<%= user.bio %>"
+			>
+			<img class="img-circle img-response" width="50" height="50" src="/img/<%= user.avatar %>">
+		</a>
+	</div>
+	<div class="col-sm-6">
+		<form action="/posts" method="post">
+			<div class="form-group">
+				<label for="">标题</label>
+				<input class="form-control" type="text" name="title">
+			</div>
+			<div class="form-group">
+				<label>内容</label>
+				<textarea class="form-control" name="content" rows="15"></textarea>
+			</div>
+			<input type="submit" class="btn btn-block btn-info" value="发表文章">
+		</form>
+	</div>
+</div>
+
+<%- include('footer')%>
